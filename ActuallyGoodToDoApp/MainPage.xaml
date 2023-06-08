@@ -10,20 +10,28 @@
             Padding="30,0"
             VerticalOptions="Fill">
 
-            <TableView Intent="Menu">
-                <TableRoot>
-                    <TableSection Title="Today">
-                        
-                    </TableSection>
-                    <TableSection Title="Tomorrow">
-                        
-                    </TableSection>
-                    <TableSection Title="Upcoming">
-                        
-                    </TableSection>
-                </TableRoot>
-            </TableView>
-            
+            <CollectionView IsGrouped="True" x:Name="xcv_collection">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}"
+                               FontSize="18"
+                               FontAttributes="Bold"/>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Label Grid.Column="1"
+                               Text="{Binding Summary}"
+                               FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                Grid.Column="1"
+                               FontAttributes="Italic"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <!--<Button 
                 x:Name="xbt_add" 
                 Text="Add Activity"
