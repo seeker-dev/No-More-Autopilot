@@ -1,24 +1,27 @@
-﻿namespace ActuallyGoodToDoApp;
+﻿using ActuallyGoodToDoApp.Models;
+
+namespace ActuallyGoodToDoApp;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    private void ContentPage_Loaded(object sender, EventArgs e)
+    {
+        xlv_list.ItemsSource = ActivityRepository.GetActivities();
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private async void xbt_add_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(AddActivity)}");
+    }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private async void xlv_list_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(ViewActivity)}?id={((Activity)xlv_list.SelectedItem).Id - 1}");
+    }
 }
 

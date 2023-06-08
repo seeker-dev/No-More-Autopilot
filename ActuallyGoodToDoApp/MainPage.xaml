@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ActuallyGoodToDoApp.MainPage">
+             x:Class="ActuallyGoodToDoApp.MainPage"
+             Loaded="ContentPage_Loaded">
 
     <ScrollView>
         <VerticalStackLayout
@@ -9,7 +10,24 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
+            <Button 
+                x:Name="xbt_add" 
+                Text="Add Activity"
+                Clicked="xbt_add_Clicked">
+            </Button>
+
+            <ListView 
+                x:Name="xlv_list"
+                ItemSelected="xlv_list_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                            Text="{Binding Summary}">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
@@ -33,7 +51,7 @@
                 Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" />-->
 
         </VerticalStackLayout>
     </ScrollView>
