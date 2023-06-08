@@ -8,16 +8,31 @@
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="Fill">
 
-            <Button 
+            <TableView Intent="Menu">
+                <TableRoot>
+                    <TableSection Title="Today">
+                        
+                    </TableSection>
+                    <TableSection Title="Tomorrow">
+                        
+                    </TableSection>
+                    <TableSection Title="Upcoming">
+                        
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            
+            <!--<Button 
                 x:Name="xbt_add" 
                 Text="Add Activity"
                 Clicked="xbt_add_Clicked">
-            </Button>
-
-            <ListView 
+            </Button>-->
+            
+            <!--<ListView 
                 x:Name="xlv_list"
+                
                 ItemSelected="xlv_list_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -26,7 +41,7 @@
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
             <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
